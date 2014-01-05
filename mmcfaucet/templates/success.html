@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>mmcfaucet.com</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <style>
+
+    body {
+        color: #777;
+    }
+
+    body,
+    .pure-g [class *= "pure-u"],
+    .pure-g-r [class *= "pure-u"] {
+        font-family: "Montserrat", sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: bold;
+        color: rgb(75, 75, 75);
+    }
+    h3 {
+        font-size: 1.25em;
+    }
+    h4 {
+        font-size: 1.125em;
+    }
+
+    a {
+        color: #3b8bba; /* block-background-text-normal */
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: #265778; /* block-normal-text-normal */
+    }
+
+
+     /* --------------------------
+      * Content Module Styles
+      * --------------------------
+     */
+
+    /* The content div is placed as a wrapper around all the docs */
+    .content {
+        margin: 0 auto;
+        padding: 0 2em;
+        max-width: 800px;
+        margin-bottom: 50px;
+    }
+        .content p {
+            line-height: 1.6em;
+            font-size: 1.125em;
+        }
+
+        .content .content-subhead {
+            margin: 50px 0 20px 0;
+            font-weight: 300;
+            color: #888;
+            position: relative;
+        }
+
+        .content .content-spaced {
+            line-height: 1.8em;
+        }
+
+        /* A code snippet that has been syntax highlighted */
+        .content .snippet {
+            margin: 1.3em 0 1em;
+            padding: 1.3em;
+        }
+
+        .content .content-quote {
+            font-family: "Georgia", serif;
+            color: #666;
+            font-style: italic;
+            line-height: 1.8em;
+            border-left: 5px solid #ddd;
+            padding-left: 1.5em;
+        }
+
+        .content-link {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            height: 100%;
+            width: 20px;
+            background: transparent url('/img/link-icon.png') no-repeat center center;
+            background-size: 20px 20px;
+        }
+
+
+    pre {
+        word-wrap: break-word;
+        padding: 6px 10;
+        line-height: 1.3em;
+        margin-bottom: 20;
+        border: 1px solid #eee;
+    }
+
+    code {
+        border: none;
+        margin: 0 2px;
+        font-size: 0.8em;
+        padding: 0.4em 0.6em;
+        white-space: nowrap;
+    }
+
+    pre code {
+        padding: 0;
+        margin: 0;
+        font-size: 0.95em;
+        white-space: pre-wrap;
+    }
+
+    pre, code {
+        font-family: Consolas, 'Liberation Mono', Courier, monospace;
+        color: #333;
+        background: rgb(250, 250, 250);
+    }
+
+
+    pre .comment {
+        color: #999;
+    }
+
+
+    pre .tag, pre .tag-name, pre .support.tag-name {
+        color: rgb(85, 85, 85);
+    }
+
+    pre .keyword, pre .css-property, pre .vendor-prefix, pre .sass, pre .class, pre .id, pre .css-value, pre .entity.function, pre .storage.function {
+        font-weight: bold;
+    }
+
+    pre .css-property, pre .css-value, pre .vendor-prefix, pre .support.namespace {
+        color: #333;
+    }
+
+    pre .constant.numeric, pre .keyword.unit, pre .hex-color {
+        font-weight: normal;
+        color: #099;
+    }
+
+    pre .attribute, pre .variable, pre .support {
+        color:  #757575; /* skinbuilder block-page-text-normal with #1f8dd6 as primary */
+    }
+
+    pre .string, pre .support.value  {
+        font-weight: normal;
+        color: #3b8bba; /* skinbuilder block-mine-text-low with #1f8dd6 as primary */
+    }
+
+    .pure-button-success {
+        background: rgb(28, 184, 65); /* this is a green */
+    }
+
+    .rounded {
+        border-radius: 8px;
+         -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -khtml-border-radius: 80px;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+        display: inline;
+    }
+
+    .head {
+        display: inline;
+    }
+
+</style>
+
+
+</head>
+<body>
+<div class="content">
+
+       <h1><a href="{{ url_for('index') }}" class="head">memorycoin faucet</a></h1>
+
+        <h4>faucet sent you {{ amount }} mmc! <a href="http://www.chainbrowser.com/memorycoin/tx/{{result}}/">see transaction.</h4>
+
+    <a href="http://www.memorycoin.org/"><img src="http://www.memorycoin.info/mmc2.png"></a>
+
+</div>
+</body>
+</html>
