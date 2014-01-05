@@ -1,9 +1,0 @@
-
-
-RECAPTCHA_PUBLIC_KEY = "6Lc-dOwSAAAAAGZmo03hZmrFMC2aFmS6t6Np6Nq2"
-RECAPTCHA_PRIVATE_KEY = "6Lc-dOwSAAAAAAWjYrWSyABNE-i6Y0offLxgfelt"
-
-DEBUG = True
-
-SECRET_KEY = 'asdfalskdjaskldj'
-
