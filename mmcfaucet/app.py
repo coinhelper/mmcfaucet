@@ -18,7 +18,6 @@ app = Flask(__name__)
 app.config.from_pyfile('settings.py')
 
 from forms import MyForm
-from connection import bitcoind
 
 
 def add_transaction_to_database(address, amount, ip, transaction):
@@ -32,12 +31,13 @@ def add_transaction_to_database(address, amount, ip, transaction):
 
 
 def send_to_address(address):
-    list1, list2, list3, list4 = random.uniform(0.01, 0.5), random.uniform(0.01, 0.1), random.uniform(0.01, 0.5), random.uniform(0.01, 0.2)
+    list1, list2, list3, list4 = random.uniform(0.01, 0.5), random.uniform(0.01, 0.2), random.uniform(0.01, 0.5), random.uniform(0.01, 2)
     all_ = [list1, list2, list3, list4]
     random.shuffle(all_)
 
     amount = Decimal(str(all_[0])[0:7])
-    result = bitcoind.sendfrom('faucet', address, float(amount))
+    bitcoind = bitcoinrpc.connect_to_local()
+    result = bitcoind.sendtoaddress(address, float(amount))
 
     return result, amount
 
@@ -45,8 +45,9 @@ def send_to_address(address):
 @app.route('/', methods=['POST', 'GET'])
 def index():
 
-    balance = bitcoind.getbalance('faucet')
-    if balance < Decimal('0.10000000'):
+    bitcoind = bitcoinrpc.connect_to_local()
+    balance = bitcoind.getbalance('')
+    if balance < Decimal('2'):
         return render_template("base.html", balance=False)
 
     if request.method == 'GET':
@@ -56,7 +57,9 @@ def index():
 
         form = MyForm(request.form)
         if form.validate():
+            
             result, amount = send_to_address(form.data.get("address"))
+            
             add_transaction_to_database(form.data.get("address"), float(amount), request.remote_addr, result)
             return render_template('success.html', result=result, amount=amount)
 

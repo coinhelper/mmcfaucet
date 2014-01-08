@@ -5,7 +5,11 @@ from wtforms import TextField
 from wtforms.validators import DataRequired
 from wtforms import ValidationError
 
-from connection import bitcoind, database
+from connection import database
+
+import bitcoinrpc
+import bitcoinrpc.config
+
 
 import time
 
@@ -38,6 +42,7 @@ class MyForm(Form):
     recaptcha = RecaptchaField()
 
     def validate_address(form, field):
+        bitcoind = bitcoinrpc.connect_to_local()
         result = bitcoind.validateaddress(field.data)
 
         if not result.isvalid:
